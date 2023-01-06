@@ -1,5 +1,4 @@
 .vscode
 /node_modules
-.fig
-.sketch
-./package-lock.json
+package-lock.json
+
