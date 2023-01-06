@@ -2,3 +2,4 @@
 /node_modules
 .fig
 .sketch
+./package-lock.json
