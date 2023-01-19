@@ -1,2 +1,2 @@
 # Number-guessing-game
-[](./src/mobile.png) 
+[](./src/mobile.png)
