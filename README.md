@@ -1,2 +1,2 @@
 # Guess-my-number
-check for template
+[](./src/mobile.png)

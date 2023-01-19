@@ -9,6 +9,7 @@ const inputElement = document.querySelector('.guess');
 const message = document.querySelector('.message');
 
 const scoreElement = document.querySelector('.score');
+
 let score = Number(scoreElement.textContent);
 
 const highscoreElement = document.querySelector('.highscore');
@@ -26,39 +27,44 @@ const reset = _ => {
   score = 20;
 };
 
+const displayMessage = (message) => {
+  document.querySelector('.message').textContent = message;
+};
+
 const check = () => {
-  let messageContent = '';
+   // When there's no input
+  if (!guess && guess != 0) {
+    displayMessage('⛔ No number!');
 
-  if (score > 0) {
-    if (!inputElement.value) {
-      messageContent = '🚨No Number!🚨';
-    } else if (inputElement.value == secretNumber) {
-      messageContent = '💥🎉 Correct Number!';
+    // When player wins
+  } else if (guess === secretNumber) {
+    displayMessage('🎉 Correct Number!');
 
-      secretNumberElement.textContent = inputElement.value;
+    document.querySelector('.number').textContent = secretNumber;
 
-      document.querySelector('body').style.backgroundColor = '#60b347';
-      document.querySelector('.number').style.width = '27.5rem';
+    document.querySelector('body').style.backgroundColor = '#60b347';
 
-      score > highscoreElement.textContent
-        ? (highscoreElement.textContent = score)
-        : highscoreElement.textContent;
-    } else {
-      if (inputElement.value > secretNumber) {
-        messageContent = '📉Too high';
-      } else {
-        messageContent = ' 📈Too low';
-      }
-      score -= 1;
-      scoreElement.textContent = score;
+    document.querySelector('.number').style.width = '30rem';
+
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
     }
-  } else {
-    messageContent = 'So sad, you lost 🤦‍♂️';
-  }
 
-  message.textContent = messageContent;
+    // When guess is wrong
+  } else if (guess !== secretNumber) {
+      if (score <= 1) {
+        displayMessage('💥Sorry, You lost the game!');
+        document.querySelector('.score').textContent = 0;
+      } else if (score >= 2) {
+        displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
+        score--;
+        document.querySelector('.score').textContent = score;
+      } 
+    }
 };
 
 checkBtn.addEventListener('click', check);
 
 againBtn.addEventListener('click', reset);
+
