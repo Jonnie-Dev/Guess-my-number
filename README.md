@@ -1,2 +1,2 @@
 # Number-guessing-game
-./mobile.png
+./src/mobile.png
