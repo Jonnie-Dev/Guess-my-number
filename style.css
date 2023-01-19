@@ -21,7 +21,7 @@ body {
 /* LAYOUT */
 header {
   position: relative;
-  height: 35vh;
+  height: 40vh;
   border-bottom: 7px solid #eee;
 }
 
@@ -116,4 +116,31 @@ h1 {
 
 .label-score {
   margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 50rem) {
+  header {
+    height: 50vh;
+  }
+  main {
+    height: unset;
+    display: block;
+    text-align: center;
+    margin: 0 auto 8rem;
+  }
+  .left {
+    margin-top: 10rem;
+  }
+  .right,
+  .left {
+    width: unset;
+  }
+  .message {
+    margin: 4rem 0;
+  }
+  .between {
+    position: relative;
+    top: 10rem;
+    left: 2rem;
+  }
 }
